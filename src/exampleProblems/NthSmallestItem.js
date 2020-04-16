@@ -4,7 +4,12 @@ import Problem from '../components/Problem';
 export default function NthSmallestItem() {
   // Solve the problem here
   const nthSmallestItem = (inputArray, n) => {
-    return 0;
+    // Sort the array
+    const sortedArray = inputArray.sort((a, b) => {
+      return a - b;
+    });
+    // Find item in array at n-1
+    return sortedArray[n - 1];
   };
 
   return (

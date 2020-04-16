@@ -4,8 +4,30 @@ import Problem from '../components/Problem';
 export default function Palindromes() {
   // Solve the problem here
   const palindromes = (input) => {
+    // Empty string should be valid palindrome
+    if (input === '') {
+      return true;
+    }
+    // Strip out non-alphanumeric characters
+    const nonAlphanumericCharacterString = input.replace(/\W/g, '');
+    // Strip out casing from input
+    const cleanedString = nonAlphanumericCharacterString.toLowerCase();
+    // Check char at beginning/end of the string, compare, move to the next one
+    let endPointer = cleanedString.length - 1;
+    let beginningPointer = 0;
+    for (let i = 0; i < cleanedString.length / 2; i++) {
+      if (
+        cleanedString.charAt(beginningPointer) !==
+        cleanedString.charAt(endPointer)
+      ) {
+        return false;
+      }
+      beginningPointer++;
+      endPointer--;
+    }
     return true;
   };
+
   const example1Input = 'A man, a plan, a canal: Panama';
   const example2Input = 'race a car';
 
